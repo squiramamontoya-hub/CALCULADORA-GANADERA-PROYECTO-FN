@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganadería PRO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen" class="login">
+  <div class="login-box">
+    <h2>🐄 Ganadería PRO</h2>
+    <input id="user" placeholder="Usuario">
+    <input id="pass" type="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <button onclick="registrar()">Registrarse</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;">
+  <div class="layout">
+
+    <aside class="sidebar">
+      <h2>🐄 Panel</h2>
+
+      <button onclick="UI.mostrar('inicio')">Inicio</button>
+      <button onclick="UI.mostrar('calc')">Calculadora</button>
+      <button onclick="UI.mostrar('historialBox')">Historial</button>
+
+      <button class="btn-red" onclick="logout()">Cerrar sesión</button>
+    </aside>
+
+    <main class="main">
+
+      <section id="inicio" class="card">
+        <h2>Bienvenido</h2>
+        <p>Sistema profesional de gestión ganadera</p>
+      </section>
+
+      <section id="calc" class="card" style="display:none;">
+        <h2>Nuevo cálculo</h2>
+
+        <!-- Filtro de tipo de producto -->
+        <label for="tipoProducto">Tipo de producto:</label>
+        <select id="tipoProducto">
+          <option value="carne">Carne (kg)</option>
+          <option value="leche">Leche (litros)</option>
+          <option value="huevos">Huevos (unidad)</option>
+        </select>
+
+        <input id="animal" placeholder="Animal (vaca, toro, novillo...)">
+        <input id="cantidad" type="number" placeholder="Cantidad (según producto)">
+        <input id="precioUnitario" type="number" placeholder="Precio unitario ($)">
+
+        <button onclick="calcular()">Calcular</button>
+        <button class="btn-red" onclick="limpiar()">Reiniciar</button>
+
+        <div id="resultadoBox" class="resultado"></div>
+      </section>
+
+      <section id="historialBox" class="card" style="display:none;">
+        <h2>Historial</h2>
+        <div id="historial"></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<div id="chatBotBtn" onclick="toggleChat()">🤖</div>
+
+<div id="chatBox">
+  <div class="chat-header">Asistente Ganadero</div>
+  <div id="chatMessages"></div>
+
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Pregunta algo...">
+    <button onclick="chat()">Enviar</button>
+  </div>
+</div>
+
+<script src="storage.js"></script>
+<script src="auth.js"></script>
+<script src="ui.js"></script>
+<script src="chatbot.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
